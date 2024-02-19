@@ -25,3 +25,6 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+Route::get('/home', function () {
+    return view('home');
+});
