@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CartController;
@@ -28,3 +29,4 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/home',[ProductController::class,'index']);
