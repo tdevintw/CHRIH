@@ -14,6 +14,23 @@
                     <li><a class="hover:text-gray-200" href="#">Collections</a></li>
                     <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
                 </ul>
+
+<!--Search Bar -->
+<div>
+                    
+<form action="{{route('search')}}"   class="flex items-center max-w-sm mx-auto">   
+    <label for="simple-search" class="sr-only">Search</label>
+    <div class="relative w-full">
+        <input type="text" name='q' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Your Plants ..." required />
+    </div>
+    <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white  rounded-lg border border-blue-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+        <span class="sr-only">Search</span>
+    </button>
+  </form>
+                </div>
                 <!-- Header Icons -->
                 <div class="hidden xl:flex items-center space-x-5 items-center">
                     <a class="hover:text-gray-200" href="#">
@@ -73,6 +90,7 @@
         </div>
     </section>
 </div>
+<!--Search Bar -->
 
 <script>
     document.getElementById('menu-toggle').addEventListener('click', function () {
