@@ -9,7 +9,7 @@
                 </a>
                 <!-- Nav Links -->
                 <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                    <li><a class="hover:text-gray-200" href="#">Home</a></li>
+                    <li><a class="hover:text-gray-200" href="/">Home</a></li>
                     <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
                     <li><a class="hover:text-gray-200" href="#">Collections</a></li>
                     <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
@@ -42,8 +42,8 @@
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </a>
+                        </svg></a>
+
 
                 </div>
             </div>
@@ -75,7 +75,13 @@
 </div>
 
 <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.getElementById('menu-toggle').addEventListener('click', function() {
         document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+<script>
+    document.getElementById('dropdownDefaultButton').addEventListener('click', function() {
+        var dropdownMenu = document.getElementById('dropdown');
+        dropdownMenu.classList.toggle('hidden');
     });
 </script>
