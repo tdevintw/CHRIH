@@ -13,9 +13,25 @@ class ProductController extends Controller
         return view('home', compact('products'));
 
     }
-    public function show(){
+    public function show($id){
         $categories = Categorie::all();
-        return view('show', compact('categories'));
+        $products= Product::where('categorie_id',$id)->get();
+        return view('show', compact('categories','products'));
+    }
+
+
+
+    public function showProductsByCategory($categoryId)
+    {
+        $category = Categorie::findOrFail($categoryId);
+        $products = Product::where('category_id', $category->id)->get();
+        return view('product.show_by_category', compact('category', 'products'));
+    }
+
+    public function store(){
+        $products = Product::all();
+        return view('store', compact('products'));
+
     }
     public function search(){
         $q = request()->input('q');

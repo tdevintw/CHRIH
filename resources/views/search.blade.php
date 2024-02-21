@@ -4,7 +4,9 @@
 <section class="text-gray-600 bg-green-50 body-font">
     <div class="px-5 py-24 mx-auto flex flex-wrap -m-4">
         @if ($products->isEmpty())
-            <p>No products found.</p>
+        <div class="flex items-center bg-red-400">
+            <p>No products found.</p></div>
+        
         @else
             @foreach ($products as $product)
                 <div class=" lg:w-1/4 md:w-1/2 p-4 w-full">
