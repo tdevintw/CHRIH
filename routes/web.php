@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MollieController;
+use App\Http\Controllers\OrderController;
+use App\Models\Order;
+use Mollie\Laravel\Facades\Mollie;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +20,22 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'registerStore'])->name('registerStore');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware('auth')->group(function () {
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/insert', [CartController::class, 'insert'])->name('cart.insert');
+Route::post('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::post('/cart/check', [CartController::class, 'check'])->name('cart.check');
+Route::get('/checkout', [MollieController::class, 'mollie'])->name('pay');
+Route::get('/succes', [MollieController::class, 'succes'])->name('succes');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/',[ProductController::class,'index'])->name('home');

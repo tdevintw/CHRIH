@@ -1,26 +1,27 @@
 @extends('layout')
 @section('content')
-<section class="text-gray-600 body-font">
+    <section class="text-gray-600 body-font">
 
-  <div class="bg-green-100 py-8 grid grid-cols-1 md:grid-cols-2">
-      <!-- Left hero section-->
-      <div class="flex flex-col justify-center p-4 py-10 md:p-10">
-          <div>
-              <h1 class="title-font sm:text-4xl text-3xl mb-4 font-serif font-medium text-2xl lg:w-2/3">
-                  Discover Happiness in Every Plant .</h1>
-              <p class="lg:w-2/3">Explore and Elevate Your Space with Our Exquisite Plant Collection!</p>
-          </div>
-      </div>
-      <!-- Right hero section-->
-      <div class="md:ml-4">
-          <img class="object-cover w-full h-full" src="https://media.istockphoto.com/id/1555375435/fr/photo/serre-%C3%A9cologique-et-portrait-de-femme-avec-une-plante-pour-un-don-durable-ou-botanique.jpg?s=612x612&w=0&k=20&c=B9GvNv-iE4741JmtqN2bUxHxanm-F7gqVdk1o9c3iUE="
-              alt="">
-      </div>
-  </div>
-</section>
+        <div class="bg-green-100 py-8 grid grid-cols-1 md:grid-cols-2">
+            <!-- Left hero section-->
+            <div class="flex flex-col justify-center p-4 py-10 md:p-10">
+                <div>
+                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-serif font-medium text-2xl lg:w-2/3">
+                        Discover Happiness in Every Plant .</h1>
+                    <p class="lg:w-2/3">Explore and Elevate Your Space with Our Exquisite Plant Collection!</p>
+                </div>
+            </div>
+            <!-- Right hero section-->
+            <div class="md:ml-4">
+                <img class="object-cover w-full h-full"
+                    src="https://media.istockphoto.com/id/1555375435/fr/photo/serre-%C3%A9cologique-et-portrait-de-femme-avec-une-plante-pour-un-don-durable-ou-botanique.jpg?s=612x612&w=0&k=20&c=B9GvNv-iE4741JmtqN2bUxHxanm-F7gqVdk1o9c3iUE="
+                    alt="">
+            </div>
+        </div>
+    </section>
 
 
-
+    <!--Categorie section -->
     <section class="text-gray-600 body-font">
         <div class=" px-5 py-14 mx-auto ">
             <h1 class="sm:text-3xl text-3xl font-medium title-font  text-gray-900">The Category </h1>
@@ -91,129 +92,40 @@
 
 
 
-    <section class="text-gray-600 bg-green-50	 body-font">
-        <div class=" px-5 py-24 mx-auto">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-10 text-gray-900">Large Plants & Trees </h1>
+    <section class="text-gray-600 bg-green-50 body-font">
+        <div class="px-5 py-24 mx-auto flex flex-wrap -m-4">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-10 text-gray-900 w-full">Large Plants & Trees</h1>
 
-            <div class="flex flex-wrap -m-4">
+            @foreach ($products as $product)
                 <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                     <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/420x260">
+                        <img alt="Product" class="object-cover object-center w-full h-full block"
+                            src="{{ asset('storage/' . $product->image) }}">
                     </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 
-          focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-400">Buy</button>
-                    </div>
 
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/421x261">
-                    </a>
                     <div class="mt-4 flex items-center justify-between">
                         <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
+                            <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
+                            <p class="mt-1">${{ $product->price }}</p>
                         </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 
-          focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
+                        @if ($product->quantity == 0)
+                        <button 
+                        class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">out of stock</button>
+                        @else
+                        <form action="{{route('cart.insert')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit"
+                                class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
+                        </form>   
+                        @endif
+
                     </div>
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/422x262">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/423x263">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/424x264">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/425x265">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/427x267">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/428x268">
-                    </a>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
-                            <p class="mt-1">$16.00</p>
-                        </div>
-                        <button type="button"
-                            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
+
 
 
     <section class="text-gray-600 body-font">

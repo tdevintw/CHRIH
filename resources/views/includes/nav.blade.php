@@ -3,27 +3,67 @@
         <!-- navbar -->
         <nav class="flex justify-between	 text-white">
             <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-                <a class="text-3xl font-bold font-heading" href="#">
+                <a class="text-3xl font-bold font-heading" href="{{ route('home') }}">
                     <!-- <img class="h-9" src="logo.png" alt="logo"> -->
                     BasmaShop
                 </a>
                 <!-- Nav Links -->
                 <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                    <li><a class="hover:text-gray-200" href="/">Home</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Collections</a></li>
-                    <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
+                    <li><a class="hover:text-gray-200" href="{{ route('home') }}">Home</a></li>
+                    <li><a class="hover:text-gray-200 cursor-pointer">Catagory</a></li>
+                    <li><a class="hover:text-gray-200 cursor-pointer">Store</a></li>
+                    <li><a class="hover:text-gray-200 cursor-pointer">Collections</a></li>
+                    <li><a class="hover:text-gray-200 cursor-pointer">Contact Us</a></li>
                 </ul>
                 <!-- Header Icons -->
                 <div class="hidden xl:flex items-center space-x-5 items-center">
-                    <a class="hover:text-gray-200" href="#">
+                    <!-- Sign In / Register -->
+                    <div style="display: flex;flex-direction:column;align-items:center;">
+                        <svg id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                            xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200 cursor-pointer"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div style="width: 100px;position: absolute" id="dropdown"
+                            class="mt-10 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                @guest
+                                    <li>
+                                        <a href="{{ route('voyager.login') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('register') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                            up </a>
+                                    </li>
+
+                                @endguest
+                                @auth
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button
+                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout
+                                            </button>
+                                            </a>
+                                        </form>
+
+                                    </li>
+                                @endauth
+                            </ul>
+                        </div>
+                    </div>
+                    <a class="hover:text-gray-200 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     </a>
-                    <a class="flex items-center hover:text-gray-200" href="#">
+                    <a class="flex items-center hover:text-gray-200 curspor-pointer" href={{ route('cart.index') }}>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -36,13 +76,7 @@
                             </span>
                         </span>
                     </a>
-                    <!-- Sign In / Register -->
-                    <a class="flex items-center hover:text-gray-200" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg></a>
+
 
 
                 </div>
@@ -66,9 +100,24 @@
         <!-- Mobile navigation menu -->
         <div class="hidden xl:hidden" id="mobile-menu">
             <ul class="flex flex-col px-4 mx-auto font-semibold font-heading space-y-4 pb-4">
-                <li><a class="text-white" href="#">Home</a></li>
-                <li><a class="text-white" href="#">Catagory</a></li>
-                <li><a class="text-white" href="#">Collections</a></li>
+                <li><a class="text-white" href="{{ route('home') }}">Home</a></li>
+                <li><a class="text-white" href="{{ route('home') }}">strore</a></li>
+                @guest
+                    <li><a class="text-white" href="{{ route('voyager.login') }}">Login</a></li>
+                    <li><a class="text-white" href="{{ route('register') }}">signin</a></li>
+                @endguest
+                @auth
+                <li>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout
+                        </button>
+                        </a>
+                    </form>
+
+                </li>
+                @endauth
             </ul>
         </div>
     </section>

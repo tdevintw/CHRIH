@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends \TCG\Voyager\Models\User
 {
+
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -41,4 +43,11 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function shopingcards(){
+        return $this->hasMany(Shopingcard::class);
+    }
+    public function payements(){
+        return $this->hasMany(Payement::class);
+    }
 }
