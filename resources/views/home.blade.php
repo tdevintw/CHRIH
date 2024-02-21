@@ -74,72 +74,21 @@
     
 
 
-    <section class="text-gray-600 body-font">
-        <div class=" px-5 py-14 mx-auto">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font  text-gray-900">Recomands Plants For You! </h1>
-
+    <div class=" mx-auto">
+        <div class="bg-gradient-to-br from-green-600 to-lime-800	 text-white text-center py-10 px-20 rounded-lg shadow-md relative">
+            <img src="https://dynamic.brandcrowd.com/asset/logo/cc6e610e-67f9-4de3-95b1-d55795a240f2/logo-search-grid-2x?logoTemplateVersion=2&v=638371196642500000&text=BasmaShop" class="w-20 mx-auto mb-4 rounded-lg">
+            <h3 class="text-2xl font-semibold mb-4"><strong class="">20%</strong> flat off on all rides within the city<br>using HDFC Credit Card</h3>
+            <div class="flex items-center space-x-2 mb-6">
+                <span id="cpnCode" class="border-dashed border text-white px-4 py-2 rounded-l">Favoris Soldes</span>
+                <span id="cpnBtn" class="border border-white bg-white text-purple-600 px-4 py-2 rounded-r cursor-pointer">STEALDEAL20</span>
             </div>
-            <div class="flex flex-wrap -m-4">
+            <p class="text-sm">Valid Till: 20Dec, 2021</p>
+            
+<div class="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6"></div>
+<div class="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6"></div>
 
-                <div class="lg:w-1/4 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                            src="https://dummyimage.com/603x363">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The 400 Blows</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                            src="https://dummyimage.com/602x362">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Neptune</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                            src="https://dummyimage.com/605x365">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Holden Caulfield</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                            src="https://dummyimage.com/606x366">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Alper Kamu</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
 
     <section class="text-gray-600 bg-green-50 body-font">
         <div class=" mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
