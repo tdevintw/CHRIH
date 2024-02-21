@@ -59,9 +59,9 @@ class MollieController extends Controller
             $obj->user_id = Auth::user()->id;
 
             $obj->save();
+            session()->put('payement_id', $obj->id);
 
-            session()->forget('paymentId');
-            session()->forget('quantity');
+
             
             return redirect()->route('order.index');
         } else {

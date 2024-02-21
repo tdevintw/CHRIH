@@ -131,9 +131,9 @@
                                     </p>
                                 </div>
                                 <form action="{{route('pay')}}" method="get">
-                                    @csrf+
+                                    @csrf
                                     <input type="hidden" name="quantity" value="{{$count}}">
-                                    <input type="hidden" name="total" value="{{$total}}">
+                                    <input type="hidden" name="total" value="{{$totalcart}}">
                                     <button type="submit"
                                     class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">Checkout</button>
                                 </form>
