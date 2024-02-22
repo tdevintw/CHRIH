@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Product;
+use Auth;
 use Illuminate\Http\Request;
+use TCG\Voyager\Models\Category;
 
 class ProductController extends Controller
 {
@@ -38,8 +40,6 @@ class ProductController extends Controller
     public function search(){
         $q = request()->input('q');
         $categories = Categorie::all();
-        $categories=Categorie::where('name','like',"%$q%")
-                     ->get();
         $products = Product::where('name', 'like', "%$q%")
                         ->get(); 
                         $productsByCategory = Product::whereHas('category', function ($query) use ($q) {
@@ -49,5 +49,22 @@ class ProductController extends Controller
 
         return view('search', compact('products','categories'));
     }
-    
+    public function addToFavoris(Product $product)
+{
+    $user = auth()->user();
+    $categories = Categorie::all();
+    $products = $user->likedProducts;
+    $user->likedProducts()->attach($product->id);
+    return redirect()->route('home');
+
 }
+
+public function showFavoris(){
+    $products = Auth::user()->likedProducts;
+    $categories =  Category::all();
+    return view('favoris', compact('products','categories'));
+
+}
+}
+
+

@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ShowController;
-use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MollieController;
+use App\Http\Controllers\OrderController;
+use App\Models\Order;
+use Mollie\Laravel\Facades\Mollie;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,23 +21,33 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'registerStore'])->name('registerStore');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/show/{id}',[ProductController::class,'show'])->name('show');
+Route::get('/hoomme',[HomeController::class,'index']);
+Route::get('/search',[ProductController::class,'search'])->name('search');
+Route::get('/store',[ProductController::class,'store'])->name('store');
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::post('/favoris/{product}',[ProductController::class,'addToFavoris'])->name('favoris');
+Route::get('/favoris',[ProductController::class,'showFavoris'])->name('favoris.show');
+
+
+Route::middleware('auth')->group(function () {
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/insert', [CartController::class, 'insert'])->name('cart.insert');
+Route::post('/cart/delete', [CartController::class, 'delete'])->name('cart.delete');
+Route::post('/cart/check', [CartController::class, 'check'])->name('cart.check');
+Route::get('/checkout', [MollieController::class, 'mollie'])->name('pay');
+Route::get('/succes', [MollieController::class, 'succes'])->name('succes');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-// Route::get('/home',[ProductController::class,'index']);
-Route::get('/show/{id}',[ProductController::class,'show'])->name('show');
-Route::get('/home',[HomeController::class,'index']);
-Route::get('/search',[ProductController::class,'search'])->name('search');
-Route::get('/store',[ProductController::class,'store'])->name('store');
-Route::get('/',[HomeController::class,'index'])->name('home');
-Route::post('/cart/insert', [CartController::class, 'insert'])->name('cart.insert');
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/category/show/{categoryId}', 'ProductController@showProductsByCategory')->name('products.show_by_category');
+// Route::get('/',[ProductController::class,'index'])->name('home');

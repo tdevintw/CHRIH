@@ -40,31 +40,28 @@
 
  <!--Categorie section -->
  <section class="text-gray-600 body-font">
-    <div class="px-5 py-8 mx-auto flex flex-wrap -m-4">
-        <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-900 mb-8">The Category </h1>
+    <div class=" mx-auto px-5 py-8 flex flex-wrap -m-4">
+        <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-900 mb-8 w-full">The Category</h1>
 
         <div class="flex flex-wrap -m-4">
             @foreach ($categories as $categorie)
                 <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a href="{{route('show',$categorie->id)}}" class="block w-full h-full">
-                        <div class="flex relative">
-                            <img alt="gallery" class="absolute inset-0 w-full  object-cover object-center"
+                    <a href="{{ route('show', $categorie->id) }}" class="block w-full h-full">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="gallery" class="w-full h-full object-cover object-center transform scale-100 transition-transform duration-300 hover:scale-110"
                                 src="{{ 'storage/'.$categorie->image }}">
-                            <div
-                                class="px-8 py-10 relative z-10  border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                                <strong class="tracking-widest text-sm title-font font-bold text-indigo-700 mb-1">{{$categorie->name}}</strong>
-                                <p class="leading-relaxed">{{$categorie->description}}.</p>
+                            <div class="absolute inset-0 p-8 flex flex-col items-center justify-center text-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <strong class="tracking-widest text-sm title-font font-bold text-white mb-1">{{$categorie->name}}</strong>
+                                <p class="leading-relaxed text-white">{{$categorie->description}}.</p>
                             </div>
                         </div>
                     </a>
-                    {{-- <h1 class="text-sm text-gray-500 text-centre ">{{$categorie->name}}</h1>  --}}
-
                 </div>
-
             @endforeach
         </div>
     </div>
 </section>
+
 
 
 
@@ -80,8 +77,20 @@
                 
                 <div class="mt-4 flex items-center justify-between">
                     <div>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
+                        <div class="flex flex-row items-center space-between">
+                            <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
+                            <form action="{{route('favoris',$product->id)}}" method="post">
+                            @csrf
+                              <button class="text-gray-600" >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                </svg>
+                            </button>
+                          </form>
+                        </div>
+                        
                         <p class="mt-1 text-gray-900">Price : <strong class="text-orange-500">${{ $product->price }}</strong></p>
+                        
                         @if ($product->category)
                         <h1>Category : {{ $product->category->name }}</h1>
                    
@@ -146,4 +155,5 @@
             </div>
         </div>
     </section>
+    
 @endsection

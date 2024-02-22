@@ -6,7 +6,7 @@
         @if ($products->isEmpty())
        
         <div class="flex flex-col justify-center ">
-            <img      src="https://cdni.iconscout.com/illustration/premium/thumb/product-is-empty-8044872-6430781.png" alt="">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/product-is-empty-8044872-6430781.png" alt="">
             <p class="text-4xl text-red-400 font-extrabold dark:text-white">No products found!!?</p>
             </div>
             
