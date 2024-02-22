@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MollieController;
 use App\Http\Controllers\OrderController;
 use App\Models\Order;
@@ -23,6 +24,14 @@ use Mollie\Laravel\Facades\Mollie;
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'registerStore'])->name('registerStore');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/show/{id}',[ProductController::class,'show'])->name('show');
+Route::get('/home',[HomeController::class,'index']);
+Route::get('/search',[ProductController::class,'search'])->name('search');
+Route::get('/store',[ProductController::class,'store'])->name('store');
+Route::get('/',[HomeController::class,'index'])->name('home');
+
 Route::middleware('auth')->group(function () {
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/insert', [CartController::class, 'insert'])->name('cart.insert');
@@ -38,4 +47,4 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/',[ProductController::class,'index'])->name('home');
+// Route::get('/',[ProductController::class,'index'])->name('home');

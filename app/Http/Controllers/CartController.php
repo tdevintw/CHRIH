@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use TCG\Voyager\Models\Category;
 
 class CartController
 {
@@ -19,7 +20,8 @@ class CartController
         if($request){
             $check = $request->session()->get('check');
         }
-        return view('cart', compact('shopingcards','count','check'));
+        $categories= Category::all();
+        return view('cart', compact('shopingcards','count','check','categories'));
     }
     public function insert(Request $request)
     {
