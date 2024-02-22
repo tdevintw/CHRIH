@@ -3,7 +3,7 @@
 @section('content')
 <section class="text-gray-600 body-font overflow-hidden">
   <div class="px-5 py-24 mx-auto flex items-start flex-wrap">
-    <div class="lg:w-1/2 px-5 py-24 mx-auto flex flex-wrap -m-4  flex items-center justify-center">
+    <div class="lg:w-1/2 px-5 py-24 mx-auto flex flex-wrap -m-4  flex items-center justify-center gap-2">
       @if(count($products) > 0)
           <img alt="category img" class="lg:w-2/2 mb-4 h-96  flex items-center object-cover object-center rounded" src="{{ asset('storage/'. $products[0]->category->image) }}">
           <h1 class="text-center mb-4 text-gray-900 text-3xl title-font font-medium">{{ $products[0]->category->name }}</h1>

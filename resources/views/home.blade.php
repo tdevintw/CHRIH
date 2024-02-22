@@ -24,8 +24,7 @@
                     <span class="sr-only">Search</span>
                 </button>
             </form>
-        </div>
-        
+        </div> 
     </div>
     
       
@@ -40,27 +39,23 @@
 
  <!--Categorie section -->
  <section class="text-gray-600 body-font">
-    <div class="px-5 py-8 mx-auto flex flex-wrap -m-4">
-        <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-900 mb-8">The Category </h1>
+    <div class=" mx-auto px-5 py-8 flex flex-wrap -m-4">
+        <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-900 mb-8 w-full">The Category</h1>
 
         <div class="flex flex-wrap -m-4">
             @foreach ($categories as $categorie)
                 <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a href="{{route('show',$categorie->id)}}" class="block w-full h-full">
-                        <div class="flex relative">
-                            <img alt="gallery" class="absolute inset-0 w-full  object-cover object-center"
+                    <a href="{{ route('show', $categorie->id) }}" class="block w-full h-full">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img alt="gallery" class="w-full h-full object-cover object-center transform scale-100 transition-transform duration-300 hover:scale-110"
                                 src="{{ 'storage/'.$categorie->image }}">
-                            <div
-                                class="px-8 py-10 relative z-10  border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                                <strong class="tracking-widest text-sm title-font font-bold text-indigo-700 mb-1">{{$categorie->name}}</strong>
-                                <p class="leading-relaxed">{{$categorie->description}}.</p>
+                            <div class="absolute inset-0 p-8 flex flex-col items-center justify-center text-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <strong class="tracking-widest text-sm title-font font-bold text-white mb-1">{{$categorie->name}}</strong>
+                                <p class="leading-relaxed text-white">{{$categorie->description}}.</p>
                             </div>
                         </div>
                     </a>
-                    {{-- <h1 class="text-sm text-gray-500 text-centre ">{{$categorie->name}}</h1>  --}}
-
                 </div>
-
             @endforeach
         </div>
     </div>

@@ -38,15 +38,14 @@ class ProductController extends Controller
     public function search(){
         $q = request()->input('q');
         $categories = Categorie::all();
-        $categories=Categorie::where('name','like',"%$q%")
-                     ->get();
+
         $products = Product::where('name', 'like', "%$q%")
                         ->get(); 
                         $productsByCategory = Product::whereHas('category', function ($query) use ($q) {
                             $query->where('name', 'like', "%$q%");
                         })->get();
                         $products = $products->merge($productsByCategory);
-
+                    
         return view('search', compact('products','categories'));
     }
     

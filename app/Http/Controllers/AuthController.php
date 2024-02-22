@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use TCG\Voyager\Models\Category;
 
 class AuthController
 {
     public function register()
-    {
-        return view('Auth.register');
+    {    $categories= Category::all();
+        return view('Auth.register',compact('categories'));
     }
 
     public function registerStore(Request $request)
