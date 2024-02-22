@@ -28,12 +28,13 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Route::get('/home',[ProductController::class,'index']);
+// Route::get('/home',[ProductController::class,'index']);
 Route::get('/show/{id}',[ProductController::class,'show'])->name('show');
 Route::get('/home',[HomeController::class,'index']);
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/store',[ProductController::class,'store'])->name('store');
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::post('/cart/insert', [CartController::class, 'insert'])->name('cart.insert');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
