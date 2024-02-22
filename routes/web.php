@@ -31,8 +31,7 @@ Route::get('/hoomme',[HomeController::class,'index']);
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/store',[ProductController::class,'store'])->name('store');
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::post('/favoris/{product}',[ProductController::class,'addToFavoris'])->name('favoris');
-Route::get('/favoris',[ProductController::class,'showFavoris'])->name('favoris.show');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -43,6 +42,8 @@ Route::post('/cart/check', [CartController::class, 'check'])->name('cart.check')
 Route::get('/checkout', [MollieController::class, 'mollie'])->name('pay');
 Route::get('/succes', [MollieController::class, 'succes'])->name('succes');
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::post('/favoris/{product}',[ProductController::class,'addToFavoris'])->name('favoris');
+Route::get('/favoris',[ProductController::class,'showFavoris'])->name('favoris.show');
 
 });
 

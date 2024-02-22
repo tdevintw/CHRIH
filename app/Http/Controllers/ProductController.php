@@ -52,8 +52,6 @@ class ProductController extends Controller
     public function addToFavoris(Product $product)
 {
     $user = auth()->user();
-    $categories = Categorie::all();
-    $products = $user->likedProducts;
     $user->likedProducts()->attach($product->id);
     return redirect()->route('home');
 
