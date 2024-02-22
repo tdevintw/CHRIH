@@ -51,8 +51,13 @@ class CartController
     {   
         $product = Product::where('id', $request->product_id)->first();
         $stock = $product->quantity;
-
-        if ($stock >= $request->number) {
+        if($request->number<=0){
+            $check = [
+                'check'=>"Enter a valid number",
+                'id'=>$request->product_id
+            ];
+        }
+        else if ($stock >= $request->number) {
             
             DB::table('shopingcards')
             ->where('user_id',Auth::user()->id)
