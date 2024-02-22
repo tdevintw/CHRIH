@@ -33,7 +33,7 @@ class ProductController extends Controller
         $categories = Categorie::all();
         $products = Product::all();
 
-        return view('store', compact('categories', 'products','categoryId'));
+        return view('store', compact('categories', 'products'));
     }
     public function search(){
         $categories = Categorie::all();

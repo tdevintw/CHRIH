@@ -117,10 +117,10 @@
             </div>
             <div
                 class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                <h1 class="title-font sm:text-4xl text-3xl font-serif  mb-4 font-medium ">Before they sold out
-                    <br class="hidden lg:inline-block">readymade gluten
+                <h1 class="title-font sm:text-4xl text-3xl font-serif  mb-4 font-medium ">Nurturing Indoor Bliss:
+                    <br class="hidden lg:inline-block">  Guide to Tailored Plant Care
                 </h1>
-                <p class="mb-8 leading-relaxed">To ensure the well-being of your indoor plants, tailor your care routine by
+                <p class="mb-8 leading-relaxed">To ensure the well-being of your indoor Plants, tailor your care routine by
                     providing regular watering, adequate light, well-draining soil, and balanced fertilization. Practice
                     regular pruning, monitor for pests, and maintain appropriate ambient humidity. Protect plants from
                     temperature fluctuations and drafts. To have additional information, click on the "More" button.

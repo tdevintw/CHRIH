@@ -13,7 +13,7 @@ class HomeController extends Controller
         $products = Product::latest()->take(8)->get();
         $categories= Category::all();
         
-        return view('hoomme', compact('products','categories'));
+        return view('home', compact('products','categories'));
     }
   
 }

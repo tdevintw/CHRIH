@@ -41,7 +41,7 @@
         <div class="font-[sans-serif] bg-gray-50">
            
                 <div class="xl:col-span-2 h-max rounded-md p-8 sticky top-0">
-                    <h2 class="text-2xl font-bold text-primary-400">Complete your order</h2>
+                    <h2 class="text-2xl font-bold text-primary-400">All Products in your hand </h2>
                     <section class="text-gray-600 bg-green-50 body-font">
                       <div class="px-5 py-24 mx-auto flex flex-wrap -m-4">
                   
