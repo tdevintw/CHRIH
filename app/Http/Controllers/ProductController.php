@@ -23,21 +23,24 @@ class ProductController extends Controller
 
     public function showProductsByCategory($categoryId)
     {
+        
         $category = Categorie::findOrFail($categoryId);
         $products = Product::where('category_id', $category->id)->get();
         return view('product.show_by_category', compact('category', 'products'));
     }
 
     public function store(){
+        $categories = Categorie::all();
         $products = Product::all();
-        return view('store', compact('products'));
 
+        return view('store', compact('categories', 'products','categoryId'));
     }
     public function search(){
+        $categories = Categorie::all();
         $q = request()->input('q');
         $products = Product::where('name', 'like', "%$q%")
                         ->get(); 
-        return view('search', compact('products'));
+        return view('search', compact('products','categories'));
     }
     
 }

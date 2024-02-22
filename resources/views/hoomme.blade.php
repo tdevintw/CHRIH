@@ -40,12 +40,12 @@
 
  <!--Categorie section -->
  <section class="text-gray-600 body-font">
-    <div class="py-14 mx-auto">
+    <div class="px-5 py-8 mx-auto flex flex-wrap -m-4">
         <h1 class="sm:text-3xl text-3xl font-medium title-font text-gray-900 mb-8">The Category </h1>
 
         <div class="flex flex-wrap -m-4">
             @foreach ($categories as $categorie)
-                <div class="lg:w-1/4 md:w-1/2 sm:w-full p-4">
+                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
                     <a href="{{route('show',$categorie->id)}}" class="block w-full h-full">
                         <div class="flex relative">
                             <img alt="gallery" class="absolute inset-0 w-full  object-cover object-center"
@@ -102,8 +102,8 @@
             </div>
             <p class="text-sm">Valid Till: 20Dec, 2021</p>
             
-<div class="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6"></div>
-<div class="w-12 h-12 bg-white rounded-full absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6"></div>
+<div class=" absolute top-1/2 transform -translate-y-1/2 left-0 -ml-6"></div>
+<div class="absolute top-1/2 transform -translate-y-1/2 right-0 -mr-6"></div>
 
         </div>
     </div>

@@ -8,7 +8,7 @@
     <title>cart</title>
 </head>
 
-<body>
+<body >
     @include('includes.nav')
     @yield('content')
     @include('includes.footer')

@@ -25,6 +25,7 @@
             @endforeach
         @endif
     </div>
+    
 </section>
 
 @endsection

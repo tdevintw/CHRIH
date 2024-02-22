@@ -20,9 +20,6 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -30,12 +27,10 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-Route::get('/home', function () {
-    return view('home');
-});
+
 Route::get('/home',[ProductController::class,'index']);
 Route::get('/show/{id}',[ProductController::class,'show'])->name('show');
-Route::get('/home',[HomeController::class,'index']);
+Route::get('/hoomme',[HomeController::class,'index']);
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/store',[ProductController::class,'store'])->name('store');
 Route::get('/',[HomeController::class,'index'])->name('home');
